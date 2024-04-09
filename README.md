@@ -1,16 +1,28 @@
 # cupid
 
-A new Flutter project.
+## About
+
+Developed during debigIt hackathon in COPS Week 2024.
+<p float="left">
+    <img src="assets/cupid-logo-red-on-white.png" width="128" height="128">
+  <img src="assets/cupid-logo-white-on-red.png" width="128" height="128">
+</p>
+
+## Description
+
+cupid is a app which helps you meet new people and make new friends, based on shared interests and hobbies.
+
+cupid inverts the traditional dating app model by first asking users to chat with pseudo-anonymous strangers before revealing their profiles, if they both say yes.
+
+## Inspirations
+
+- [Omegle](https://www.omegle.com/)
+- [Puppy Love IITK](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/pclubiitk/puppy-love&ved=2ahUKEwijk5akxLWFAxUmjVYBHbbLAoUQFnoECBkQAQ&usg=AOvVaw0OwrioQ-FxYKPe0eDmJcZZ)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Build Instructions
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clone the repository
+- Run `flutter pub get` to install dependencies
+- Run `flutter run` to build and run the app
