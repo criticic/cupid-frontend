@@ -16,7 +16,7 @@ cupid inverts the traditional dating app model by first asking users to chat wit
 
 ## Inspirations
 
-- [Omegle](https://www.omegle.com/)
+- [Omegle Chat](https://www.omegle.com/)
 - [Puppy Love IITK](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/pclubiitk/puppy-love&ved=2ahUKEwijk5akxLWFAxUmjVYBHbbLAoUQFnoECBkQAQ&usg=AOvVaw0OwrioQ-FxYKPe0eDmJcZZ)
 
 ## Getting Started
