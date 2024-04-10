@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "764881220448",
+    "project_id": "cupidfirebase",
+    "storage_bucket": "cupidfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764881220448:android:4493d87517e9c7236f6405",
+        "android_client_info": {
+          "package_name": "com.example.cupid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP1nLS0IkqP_iLox_OuVJnVzZVZ_MV1WQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

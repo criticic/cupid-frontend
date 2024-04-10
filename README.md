@@ -4,8 +4,8 @@
 
 Developed during debigIt hackathon in COPS Week 2024.
 <p float="left">
-    <img src="assets/cupid-logo-red-on-white.png" width="128" height="128">
-  <img src="assets/cupid-logo-white-on-red.png" width="128" height="128">
+    <img src="assets/logos/cupid-logo-red-on-white.png" width="128" height="128">
+  <img src="assets/logos/cupid-logo-white-on-red.png" width="128" height="128">
 </p>
 
 ## Description

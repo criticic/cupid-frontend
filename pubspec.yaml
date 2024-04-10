@@ -37,6 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
   font_awesome_flutter: ^10.7.0
+  firebase_core: ^2.27.0
+  flutter_native_splash: ^2.3.10
+  google_sign_in: ^6.2.1
+  firebase_auth: ^4.17.8
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +53,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^3.0.2
   icons_launcher: ^2.1.7
-  flutter_native_splash: ^2.3.11
 
 icons_launcher:
   image_path: "assets/cupid-logo.png"
