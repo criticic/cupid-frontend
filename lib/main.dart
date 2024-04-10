@@ -1,4 +1,4 @@
-import 'package:cupid/pages/intro_carousel.dart';
+import 'package:cupid/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Bricolage Grotesque',
         useMaterial3: true,
       ),
-      home: const OnboardingScreen(),
+      home: const LoginPage(),
     );
   }
 }

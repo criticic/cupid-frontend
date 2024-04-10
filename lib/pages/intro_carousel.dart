@@ -80,7 +80,7 @@ class OnboardingScreen extends StatelessWidget {
                           fontVariations: [FontVariation.weight(700)])),
                 ],
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 24),
             ],
           ),
         ),

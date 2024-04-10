@@ -7,10 +7,12 @@ class StyledButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onTap,
+    this.icon,
   });
 
   final String text;
   final void Function() onTap;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +25,19 @@ class StyledButton extends StatelessWidget {
           color: const Color(0xffe94057),
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontVariations: [FontVariation.weight(700)],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            if (icon != null) icon!,
+            Text(
+              text,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontVariations: [FontVariation.weight(700)],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
