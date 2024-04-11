@@ -3,6 +3,7 @@
 ## About
 
 Developed during debigIt hackathon in COPS Week 2024.
+Checkout the backend [here](https://github.com/criticic/cupid-backend)
 <p float="left">
     <img src="assets/logos/cupid-logo-red-on-white.png" width="128" height="128">
   <img src="assets/logos/cupid-logo-white-on-red.png" width="128" height="128">
