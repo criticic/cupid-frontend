@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:cupid/components/styled_button.dart';
@@ -5,8 +6,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
 
-Future<UserCredential> signInWithGoogle() async {
+signInWithGoogle() async {
   // Trigger the authentication flow
   final GoogleSignInAccount? googleUser = await GoogleSignIn(
     clientId:
@@ -23,8 +26,39 @@ Future<UserCredential> signInWithGoogle() async {
     idToken: googleAuth?.idToken,
   );
 
-  // Once signed in, return the UserCredential
-  return await FirebaseAuth.instance.signInWithCredential(credential);
+  final UserCredential userCredential =
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+  final User? user = userCredential.user;
+
+  final idToken = await user?.getIdToken();
+
+  // Send the credential to Backend: localhost:3000/auth/verifyToken?token=${idToken}
+  final response = await http.get(
+      Uri.parse('http://localhost:3000/auth/verifyIdToken?token=$idToken'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      });
+
+  if (response.statusCode == 200) {
+    // If the server returns a 200 OK response, then parse the JSON.
+    Fluttertoast.showToast(
+      msg: "Successfully authenticated with Google",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+    );
+    // toast message response body uid
+    print(response.body);
+
+    //
+  } else {
+    Fluttertoast.showToast(
+      msg: jsonDecode(response.body)['error'],
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+    );
+    await FirebaseAuth.instance.signOut();
+  }
 }
 
 class LoginPage extends StatelessWidget {
