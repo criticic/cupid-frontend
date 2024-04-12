@@ -2,14 +2,16 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:cupid/components/styled_button.dart';
+import 'package:cupid/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
+import 'home_page.dart';
 
-signInWithGoogle() async {
+Future<bool> signInWithGoogle() async {
   // Trigger the authentication flow
   final GoogleSignInAccount? googleUser = await GoogleSignIn(
     clientId:
@@ -35,7 +37,7 @@ signInWithGoogle() async {
 
   // Send the credential to Backend: localhost:3000/auth/verifyToken?token=${idToken}
   final response = await http.get(
-      Uri.parse('http://localhost:3000/auth/verifyIdToken?token=$idToken'),
+      Uri.parse('http://localhost:3000/auth/signin?token=$idToken'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       });
@@ -47,10 +49,10 @@ signInWithGoogle() async {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
     );
-    // toast message response body uid
-    print(response.body);
 
-    //
+    return true;
+
+    // Navigate to the home page
   } else {
     Fluttertoast.showToast(
       msg: jsonDecode(response.body)['error'],
@@ -58,6 +60,8 @@ signInWithGoogle() async {
       gravity: ToastGravity.BOTTOM,
     );
     await FirebaseAuth.instance.signOut();
+
+    return false;
   }
 }
 
@@ -66,6 +70,12 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (FirebaseAuth.instance.currentUser != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        navigatorKey.currentState!.pushReplacementNamed('/home');
+      });
+    }
+
     return Scaffold(
       body: SafeArea(
         child: SizedBox.expand(
@@ -76,7 +86,7 @@ class LoginPage extends StatelessWidget {
               children: [
                 const Image(
                   image: AssetImage('assets/logos/cupid-logo.png'),
-                  width: 512,
+                  width: 384,
                 ),
                 const SizedBox(width: 8),
                 const Text(
@@ -87,7 +97,31 @@ class LoginPage extends StatelessWidget {
                     color: Color(0xffe94057),
                   ),
                 ),
+                const Text(
+                  'Find your perfect match',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontVariations: [FontVariation.weight(400)],
+                  ),
+                ),
                 const Spacer(),
+                // Separating Line
+                const SizedBox(
+                  height: 1,
+                  width: double.infinity,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(color: Color(0xffe94057)),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  'Sign in to continue',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontVariations: [FontVariation.weight(400)],
+                  ),
+                ),
+                const SizedBox(height: 12),
                 Column(
                   children: [
                     StyledButton(
@@ -97,7 +131,11 @@ class LoginPage extends StatelessWidget {
                         color: Colors.white,
                       ),
                       onTap: () async {
-                        await signInWithGoogle();
+                        final signedIn = await signInWithGoogle();
+                        if (signedIn) {
+                          navigatorKey.currentState!
+                              .pushReplacementNamed('/home');
+                        }
                       },
                     ),
                     const SizedBox(height: 24),
