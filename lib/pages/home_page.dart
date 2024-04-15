@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -30,10 +30,6 @@ class _HomePageState extends State<HomePage> {
       ],
     ),
     const Text(
-      'Search Page',
-      style: TextStyle(fontSize: 24),
-    ),
-    const Text(
       'Profile Page',
       style: TextStyle(fontSize: 24),
     ),
@@ -56,10 +52,6 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

@@ -9,7 +9,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
-import 'home_page.dart';
 
 Future<bool> signInWithGoogle() async {
   // Trigger the authentication flow
@@ -134,7 +133,7 @@ class LoginPage extends StatelessWidget {
                         final signedIn = await signInWithGoogle();
                         if (signedIn) {
                           navigatorKey.currentState!
-                              .pushReplacementNamed('/home');
+                              .pushReplacementNamed('/onboarding/username');
                         }
                       },
                     ),

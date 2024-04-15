@@ -1,5 +1,6 @@
 import 'package:cupid/pages/home_page.dart';
 import 'package:cupid/pages/login_page.dart';
+import 'package:cupid/pages/onboarding/username.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -12,6 +13,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoginPage());
     case '/home':
       return MaterialPageRoute(builder: (context) => const HomePage());
+
+    case '/onboarding/username':
+      return MaterialPageRoute(builder: (context) => UsernameScreen());
 
     default:
       return MaterialPageRoute(
